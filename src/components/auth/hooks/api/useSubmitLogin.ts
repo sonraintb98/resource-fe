@@ -1,6 +1,6 @@
 import { useAppMutation, UseAppMutationResult } from "@/shared/hooks/api";
+import { LoginRequest, LoginResponse } from "@/components/auth/models";
 import { postLogin } from "../../api";
-import { LoginRequest, LoginResponse } from "../../models";
 
 type UseLoginResult = Pick<
   UseAppMutationResult<LoginResponse, LoginRequest>,

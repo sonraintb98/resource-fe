@@ -1,0 +1,24 @@
+.root {
+  @apply h-screen flex items-center justify-center bg-[#F5F7FA];
+}
+
+.container {
+  @apply max-w-[23rem] flex flex-col items-center;
+}
+
+.title {
+  @apply text-[2rem] leading-[2.5rem] mt-4;
+}
+
+.message {
+  @apply text-[0.875rem] font-semibold mt-4 text-left leading-[140%];
+  white-space: pre-line;
+}
+
+.button {
+  @apply flex mt-4 p-3 border bg-white rounded border-color-eff2f7 font-semibold text-[0.875rem] leading-4;
+}
+
+.buttonIcon {
+  @apply mr-[10px];
+}

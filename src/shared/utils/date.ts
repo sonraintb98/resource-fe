@@ -1,4 +1,3 @@
-export function getCurrentDate() : Date
-{
-    return new Date();
+export function getCurrentDate(): Date {
+  return new Date();
 }

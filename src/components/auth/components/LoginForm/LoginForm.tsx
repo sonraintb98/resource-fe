@@ -1,8 +1,58 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  DEFAULT_PAGINATION_PAGE_NUM,
+  DEFAULT_PAGINATION_PAGE_SIZE,
+} from "@/shared/constants";
+import { LoginRequest, MembersRequest } from "@/components/auth/models";
+import { useGetMembersQuery, useSubmitLogin } from "@/components/auth/hooks";
+import { useFormSchema } from "@/components/auth/components/LoginForm/hooks";
+import { tokensManager } from "../../services";
+import { useRouter } from "next/navigation";
+import { ErrorResponse } from "@/shared/configs";
+
+const defaultPram = {
+  page: DEFAULT_PAGINATION_PAGE_NUM,
+  limit: DEFAULT_PAGINATION_PAGE_SIZE,
+} as MembersRequest;
 
 export function LoginForm(): React.ReactElement {
+  const router = useRouter();
+  const [params, setParams] = React.useState<MembersRequest>(defaultPram);
+  const { mutateAsync: postLogin } = useSubmitLogin();
+  const {
+    form: { formState, register, reset, handleSubmit: handleFormSubmit },
+    isError,
+    getErrorMessage,
+  } = useFormSchema();
+  const [error, setError] = React.useState("");
+
+  const onSubmit = async (formData: LoginRequest) => {
+    try {
+      const result = await postLogin(formData);
+      if (result) {
+        tokensManager.set({
+          accessToken: result.accessToken,
+          idToken: result.idToken,
+          refreshToken: result.refreshToken,
+        });
+      }
+      reset(formData);
+      router.push("/");
+    } catch (error) {
+      setError((error as ErrorResponse).message);
+    }
+  };
+
+  // const {
+  //   data: membersResponse,
+  //   isFetching: isFetchingMember,
+  //   refetch,
+  // } = useGetMembersQuery({ params });
+
+  // console.log("membersResponse: ", membersResponse);
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -163,14 +213,16 @@ export function LoginForm(): React.ReactElement {
                 Sign In to TailAdmin
               </h2>
 
-              <form>
+              <form onSubmit={handleFormSubmit(onSubmit)}>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
                     Email
                   </label>
                   <div className="relative">
                     <input
-                      type="email"
+                      {...register("email")}
+                      id="email"
+                      type="text"
                       placeholder="Enter your email"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
@@ -201,7 +253,10 @@ export function LoginForm(): React.ReactElement {
                   </label>
                   <div className="relative">
                     <input
+                      {...register("password")}
+                      id="password"
                       type="password"
+                      autoComplete="current-password"
                       placeholder="6+ Characters, 1 Capital letter"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />

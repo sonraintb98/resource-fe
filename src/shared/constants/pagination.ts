@@ -1,0 +1,3 @@
+export const DEFAULT_PAGINATION_PAGE_NUM = 1;
+export const DEFAULT_PAGINATION_PAGE_SIZE = 10;
+export const PAGINATION_LIST_NUMBER = [10, 20, 50, 100];

@@ -1,3 +1,3 @@
-import { ExtendableComponentProps } from 'src/shared/components';
+import { ExtendableComponentProps } from "@/shared/components";
 
-export type IconProps = ExtendableComponentProps<'svg'>;
+export type IconProps = ExtendableComponentProps<"svg">;

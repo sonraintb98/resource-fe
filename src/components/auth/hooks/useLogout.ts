@@ -1,7 +1,7 @@
 import * as React from "react";
 import { stateCodeManager, tokensManager } from "../services";
-import { revokeToken } from "../api";
 import { envVariables } from "@/shared/configs";
+import { revokeToken } from "@/components/auth/api";
 
 type UseLogoutReturn = {
   logout: (state: string | undefined) => Promise<void>;

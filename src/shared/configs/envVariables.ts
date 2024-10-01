@@ -1,10 +1,18 @@
-const API_ENDPOINT = process.env['NEXT_PUBLIC_API_ENDPOINT'] as string;
-const PAGE_ENDPOINT = process.env['NEXT_PUBLIC_PAGE_ENDPOINT'] as string;
-const AUTH_CLIENT_ID = process.env['NEXT_PUBLIC_AUTH_CLIENT_ID'] as string;
-const NEXT_PUBLIC_AZURE_AD_CLIENT_ID=process.env['NEXT_PUBLIC_AZURE_AD_CLIENT_ID'] as string;
-const NEXT_PUBLIC_AZURE_AD_TENANT_ID=process.env['NEXT_PUBLIC_AZURE_AD_TENANT_ID'] as string;
-const NEXT_PUBLIC_REDIRECT_URI =process.env['NEXT_PUBLIC_REDIRECT_URI'] as string;
-const NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI=process.env['NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI'] as string;;
+const API_ENDPOINT = process.env["NEXT_PUBLIC_API_ENDPOINT"] as string;
+const PAGE_ENDPOINT = process.env["NEXT_PUBLIC_PAGE_ENDPOINT"] as string;
+const AUTH_CLIENT_ID = process.env["NEXT_PUBLIC_AUTH_CLIENT_ID"] as string;
+const NEXT_PUBLIC_AZURE_AD_CLIENT_ID = process.env[
+  "NEXT_PUBLIC_AZURE_AD_CLIENT_ID"
+] as string;
+const NEXT_PUBLIC_AZURE_AD_TENANT_ID = process.env[
+  "NEXT_PUBLIC_AZURE_AD_TENANT_ID"
+] as string;
+const NEXT_PUBLIC_REDIRECT_URI = process.env[
+  "NEXT_PUBLIC_REDIRECT_URI"
+] as string;
+const NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI = process.env[
+  "NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI"
+] as string;
 export const envVariables = {
   API_ENDPOINT,
   PAGE_ENDPOINT,
@@ -12,5 +20,5 @@ export const envVariables = {
   NEXT_PUBLIC_AZURE_AD_CLIENT_ID,
   NEXT_PUBLIC_AZURE_AD_TENANT_ID,
   NEXT_PUBLIC_REDIRECT_URI,
-  NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI
+  NEXT_PUBLIC_POST_LOGOUT_REDIRECT_URI,
 };

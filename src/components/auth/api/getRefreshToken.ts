@@ -1,7 +1,7 @@
 import { apiClient } from "@/shared/configs";
-import { RefreshTokenRequest } from "../models";
-import { tokensManager } from "../services";
 import { ApiResponse } from "@/shared/models";
+import { tokensManager } from "../services";
+import { RefreshTokenRequest } from "@/components/auth/models";
 
 export const getRefreshToken = async (
   params: RefreshTokenRequest,

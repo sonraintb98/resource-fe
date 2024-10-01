@@ -1,5 +1,5 @@
 export function convertBufferToBase64(buffer: ArrayBuffer): string {
-  let binary = '';
+  let binary = "";
   const bytes = new Uint8Array(buffer);
 
   bytes.forEach((byte) => {
@@ -10,5 +10,5 @@ export function convertBufferToBase64(buffer: ArrayBuffer): string {
 }
 
 export function convertBufferToStringUtf8(buffer: ArrayBuffer): string {
-  return Buffer.from(buffer).toString('utf8');
+  return Buffer.from(buffer).toString("utf8");
 }

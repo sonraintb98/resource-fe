@@ -4,7 +4,6 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
-
 import { convertBufferToStringUtf8, statusCodes } from "../utils";
 import getConfig from "next/config";
 import {
@@ -18,11 +17,9 @@ import {
   SessionTimeOutError,
   envVariables,
 } from "./";
-import {
-  refreshTokenFn,
-  revokeRefreshToken,
-  tokensManager,
-} from "@/components/auth";
+import { tokensManager } from "@/components/auth/services";
+import { revokeRefreshToken } from "@/components/auth";
+import { refreshTokenFn } from "@/components/auth/hooks/api/useRefreshToken";
 
 export interface AxiosRequestConfigExt extends AxiosRequestConfig {
   isRetryRequest: boolean | undefined;

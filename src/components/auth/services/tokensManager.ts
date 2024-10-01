@@ -1,11 +1,11 @@
-import { add, isPast, parseISO, sub } from 'date-fns';
+import { add, isPast, parseISO, sub } from "date-fns";
 
-const ACCESS_TOKEN_ITEM = 'accessToken' as const;
+const ACCESS_TOKEN_ITEM = "accessToken" as const;
 const EXPIRES_ACCESS_TOKEN_IN_MINUTES = 15;
-const REFRESH_TOKEN_ITEM = 'refreshToken' as const;
-const ID_TOKEN_ITEM = 'idToken' as const;
-const EXPIRES_AT_ITEM = 'expiresAt' as const;
-const EXPIRES_REFRESH_AT_ITEM = 'expiresRefreshAt' as const;
+const REFRESH_TOKEN_ITEM = "refreshToken" as const;
+const ID_TOKEN_ITEM = "idToken" as const;
+const EXPIRES_AT_ITEM = "expiresAt" as const;
+const EXPIRES_REFRESH_AT_ITEM = "expiresRefreshAt" as const;
 const EXPIRES_REFRESH_IN_HOURS = 2;
 
 export type TokenType =
@@ -22,7 +22,12 @@ type SetTokensParams = {
   accessTokenTimeout?: number;
 };
 
-function set({ accessToken, idToken, refreshToken, accessTokenTimeout }: SetTokensParams): void {
+function set({
+  accessToken,
+  idToken,
+  refreshToken,
+  accessTokenTimeout,
+}: SetTokensParams): void {
   localStorage.setItem(ACCESS_TOKEN_ITEM, accessToken);
   localStorage.setItem(ID_TOKEN_ITEM, idToken);
   localStorage.setItem(REFRESH_TOKEN_ITEM, refreshToken);

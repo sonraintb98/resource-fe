@@ -6,6 +6,13 @@ import ChartTwo from "../Charts/ChartTwo";
 import ChatCard from "../Chat/ChatCard";
 import TableOne from "../Tables/TableOne";
 import CardDataStats from "../CardDataStats";
+import { useGetMembersQuery } from "@/components/auth/hooks/api";
+
+import {
+  DEFAULT_PAGINATION_PAGE_NUM,
+  DEFAULT_PAGINATION_PAGE_SIZE,
+} from "@/shared/constants";
+import { MembersRequest } from "@/components/auth/models";
 
 const MapOne = dynamic(() => import("@/components/Maps/MapOne"), {
   ssr: false,
@@ -15,7 +22,20 @@ const ChartThree = dynamic(() => import("@/components/Charts/ChartThree"), {
   ssr: false,
 });
 
+const defaultPram = {
+  page: DEFAULT_PAGINATION_PAGE_NUM,
+  limit: DEFAULT_PAGINATION_PAGE_SIZE,
+} as MembersRequest;
+
 const ECommerce: React.FC = () => {
+  const [params, setParams] = React.useState<MembersRequest>(defaultPram);
+  const {
+    data: membersResponse,
+    isFetching: isFetchingMember,
+    refetch,
+  } = useGetMembersQuery({ params });
+
+  console.log("membersResponse: ", membersResponse);
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
