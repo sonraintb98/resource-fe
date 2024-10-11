@@ -1,12 +1,12 @@
 import { safeApiClient } from "@/shared/configs";
 import {
-  EmployeeRequest,
-  EmployeeResponse,
+  EmployeesRequest,
+  EmployeesResponse,
 } from "@/components/Employees/models/employee.model";
 
 export async function postCreateEmployee(
-  params: EmployeeRequest,
-): Promise<EmployeeResponse> {
+  params: EmployeesRequest,
+): Promise<EmployeesResponse> {
   const response = await safeApiClient.post(`/employees/create`, params);
   return response.data;
 }

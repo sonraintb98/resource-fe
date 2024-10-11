@@ -1,5 +1,5 @@
 import { safeApiClient } from "@/shared/configs";
-import { MembersRequest, MembersResponse } from "../models";
+import { MembersResponse } from "../models";
 
 export async function getAllMembers(): Promise<MembersResponse> {
   const response =

@@ -1,7 +1,16 @@
-import { EmployeeResponse } from "@/components/Employees/models";
+import React from "react";
+import {
+  EmployeeEntity,
+  EmployeesRequest,
+} from "@/components/Employees/models";
 import { useRouter } from "next/navigation";
+import {
+  DEFAULT_PAGINATION_PAGE_NUM,
+  DEFAULT_PAGINATION_PAGE_SIZE,
+} from "@/shared/constants";
+import { useGetEmployeesQuery } from "@/components/Employees/hooks/api/useGetEmployeesQuery";
 
-const brandData: EmployeeResponse[] = [
+const brandData: EmployeeEntity[] = [
   {
     name: "Google",
     birthDay: "01-10-2024",
@@ -14,11 +23,25 @@ const brandData: EmployeeResponse[] = [
   },
 ];
 
+const defaultPram = {
+  page: DEFAULT_PAGINATION_PAGE_NUM,
+  limit: DEFAULT_PAGINATION_PAGE_SIZE,
+} as EmployeesRequest;
+
 const EmployeeTable = () => {
   const router = useRouter();
+  const [params, setParams] = React.useState<EmployeesRequest>(defaultPram);
   function handleClickCreateEmployee() {
     router.push("/createEmployee");
   }
+
+  const {
+    data: employeesResponse,
+    isFetching: isFetchingMember,
+    refetch,
+  } = useGetEmployeesQuery({ params });
+
+  console.log("membersResponse: ", employeesResponse);
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <button
@@ -60,7 +83,7 @@ const EmployeeTable = () => {
               </tr>
             </thead>
             <tbody>
-              {brandData.map((packageItem, key) => (
+              {employeesResponse?.data.map((packageItem, key) => (
                 <tr key={key}>
                   <td className="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                     <h5 className="font-medium text-black dark:text-white">
