@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormSchema } from "@/components/Employees/components/EmployeeForm/hooks";
-import { useSubmitEmployee } from "@/components/Employees/hooks/api/useSubmitEmployee";
+import { useSubmitEmployee } from "@/components/Employees/hooks/api/useSubmitCreateEmployee";
 import { EmployeeRequest } from "@/components/Employees/models";
 import { useRouter } from "next/navigation";
 import { ErrorResponse } from "@/shared/configs";

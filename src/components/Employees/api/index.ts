@@ -1,1 +1,1 @@
-export * from "./postEmployee";
+export * from "./postCreateEmployee";

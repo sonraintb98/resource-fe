@@ -3,7 +3,7 @@ import {
   EmployeeRequest,
   EmployeeResponse,
 } from "@/components/Employees/models/employee.model";
-import { postEmployee } from "@/components/Employees/api";
+import { postCreateEmployee } from "@/components/Employees/api";
 
 type UseLoginResult = Pick<
   UseAppMutationResult<EmployeeResponse, EmployeeRequest>,
@@ -16,7 +16,7 @@ export function useSubmitEmployee(): UseLoginResult {
     EmployeeRequest
   >({
     mutationFn(data: EmployeeRequest) {
-      return postEmployee(data);
+      return postCreateEmployee(data);
     },
   });
 
