@@ -1,6 +1,7 @@
 "use client";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import EmployeeTable from "@/components/ListEmployees/EmployeeTable";
+import EmployeeTable from "@/components/Employees/components/ListEmployees/EmployeeTable";
+
 import React from "react";
 
 const ListEmployees: React.FC = () => {

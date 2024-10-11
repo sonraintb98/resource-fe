@@ -1,13 +1,14 @@
 "use client";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import React from "react";
+import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import { EmployeeForm } from "@/components/Employees/components/EmployeeForm";
 
 const CreateEmployee: React.FC = () => {
   return (
     <>
       <Breadcrumb pageName="Tạo nhân viên mới" />
 
-      <h1>Trang tạo nhân viên mới</h1>
+      <EmployeeForm />
     </>
   );
 };
